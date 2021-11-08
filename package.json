@@ -4,7 +4,10 @@
   "description": "ToDoList",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "build": "webpack",
+    "heroku-postbuild": "echo Skip build on Heroku"
   },
   "author": "Jameson",
   "license": "ISC",
@@ -12,5 +15,6 @@
     "body-parser": "^1.19.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1"
-  }
+  },
+  "heroku-run-build-script": true
 }
