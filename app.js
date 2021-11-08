@@ -4,8 +4,8 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-let items = ["Buy Food", "Cook Food", "Eat Food"];
-let workItems = ["Something", "", ""];
+let items = ["Add your items!"];
+let workItems = ["Work work work"];
 
 app.set('view engine', 'ejs');
 
@@ -28,21 +28,25 @@ app.get("/", function(req, res) {
 
 })
 
+app.get("/work", function(req,res) {
+    res.render("list", {listTitle: "Work List", newListitems: workItems});
+})
+
+app.get("/about", function(req, res) {
+    res.render("about");
+})
+
 app.post("/", function(req, res) {
+
     let item = req.body.newItem;
     
-    if(req.body.button === "Work"){
+    if(req.body.list === "Work"){
         workItems.push(item);
         res.redirect("/work");
     } else {
         items.push(item);
         res.redirect("/");
 }})
-
-
-app.get("/work", function(req,res) {
-    res.render("list", {listTitle: "Work List", newListItems: workItems});
-})
 
 
 app.listen(3000, function() {
